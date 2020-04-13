@@ -21,5 +21,11 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-      - name: Build and Test
-        run: ./gradlew clean build test
+      - name: Build
+        run: ./gradlew clean build test --stacktrace
+      - name: Archive test reports
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-report-${{ matrix.os }}-java-${{ matrix.java }}
+          path: build/reports/tests/test/
