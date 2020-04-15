@@ -1,4 +1,4 @@
-package com.corootine.filecrypt.key
+package com.corootine.filecrypt.cek
 
 import javax.crypto.SecretKey
 

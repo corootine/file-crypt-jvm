@@ -7,8 +7,8 @@ import com.xenomachina.argparser.mainBody
 fun main(args: Array<String>) = mainBody {
     ArgParser(args).parseInto(::ParsedArgs).run {
         println(mode)
-        println(password)
-        println(files)
-        println(directories)
+
+        files.forEach { println(it.absolutePath) }
+        directories.forEach { println(it.absolutePath) }
     }
 }

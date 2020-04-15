@@ -1,4 +1,4 @@
-package com.corootine.filecrypt.key
+package com.corootine.filecrypt.cek
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
