@@ -23,7 +23,6 @@ class AesCekProvider : CekProvider {
         val factory = SecretKeyFactory.getInstance(ALGORITHM)
         val keySpec = PBEKeySpec(secret, SALT, ITERATION_COUNT, KEY_LENGTH)
         val key = factory.generateSecret(keySpec)
-        secret.forEachIndexed { index, _ -> secret[index] = '0' }
         return SecretKeySpec(key.encoded, "AES")
     }
 }
