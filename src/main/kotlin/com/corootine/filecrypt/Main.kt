@@ -9,6 +9,6 @@ import com.xenomachina.argparser.mainBody
 fun main(args: Array<String>) = mainBody {
     val parsedArgs = ArgParser(args).parseInto(::ParsedArgs)
     val password = PasswordPrompt.prompt()
-    val cek = AesCekProvider().provide(password)
+    val cek = AesCekProvider(password).provide()
     PasswordPrompt.clear()
 }

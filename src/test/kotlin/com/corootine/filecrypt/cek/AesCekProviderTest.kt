@@ -8,10 +8,10 @@ internal class AesCekProviderTest {
     @Test
     fun `should create 128 bit key`() {
         // Given
-        val cekProvider = AesCekProvider()
+        val cekProvider = AesCekProvider(charArrayOf('h', 'e', 'l', 'l', 'o'))
 
         // When
-        val cek = cekProvider.provide(charArrayOf('h', 'e', 'l', 'l', 'o'))
+        val cek = cekProvider.provide()
 
         // Then
         assertEquals(128, cek.keyLength)
@@ -19,12 +19,9 @@ internal class AesCekProviderTest {
 
     @Test
     fun `should generate the same key for the same secret`() {
-        // Given
-        val cekProvider = AesCekProvider()
-
         // When
-        val cek1 = cekProvider.provide(charArrayOf('h', 'e', 'l', 'l', 'o'))
-        val cek2 = cekProvider.provide(charArrayOf('h', 'e', 'l', 'l', 'o'))
+        val cek1 = AesCekProvider(charArrayOf('h', 'e', 'l', 'l', 'o')).provide()
+        val cek2 = AesCekProvider(charArrayOf('h', 'e', 'l', 'l', 'o')).provide()
 
         // Then
         assertEquals(cek1, cek2)
